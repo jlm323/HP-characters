@@ -9,6 +9,8 @@ import Hated from './pages/Hated';
 
 function App() {
 
+  const api = process.env.REACT_APP_API;
+
   let [characters, setCharacters] = useState([]);
   let [loved, setLoved] = useState([]);
   let [hated, setHated] = useState([]);
@@ -35,11 +37,22 @@ function App() {
     setLoved(filteredLove);
   }
 
+  const removeFromHate = (characters) => {
+    characters.hate = false;
+    let filteredHate = hated.filter((c) => c.name !== characters.name);
+    setHated(filteredHate);
+  }
+
   const getCharacters = async () => {
-    const response = await fetch(`https://hp-api.herokuapp.com/api/characters`);
-    const data = await response.json();
-    console.log(data)
-    setCharacters(data);
+    try {
+      const response = await fetch(api);
+      const data = await response.json();
+      console.log(data)
+      setCharacters(data);
+    } catch (err) {
+      console.log('error!');
+      console.log(err);
+    }
   }
 
   useEffect(() => {
@@ -47,9 +60,9 @@ function App() {
       console.log('test')
     }, [])
 
-    useEffect(() => {
-      console.log("character data has changed!", characters);
-    }, [characters]);
+    // useEffect(() => {
+    //   console.log("character data has changed!", characters);
+    // }, [characters]);
 
   return (
     <div className="App">
@@ -76,7 +89,9 @@ function App() {
 
         <Route path="/hated" 
           element={
-            <Hated hated={hated}/>
+            <Hated 
+              hated={hated}
+              removeFromHate={removeFromHate} />
           } 
         />
       </Routes>
