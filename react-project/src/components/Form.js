@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function Form({ getCharacter }) {
+export default function Form({ getCharacters }) {
 
     let [characterName, setCharacterName] = useState('');
 
@@ -10,7 +10,7 @@ export default function Form({ getCharacter }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        getCharacter(characterName);
+        getCharacters(characterName);
     }
 
     return (

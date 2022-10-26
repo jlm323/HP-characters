@@ -1,12 +1,13 @@
 import CharacterDisplay from "../components/CharacterDisplay";
 import Form from "../components/Form";
 
-export default function Home({ character, getCharacter }) {
+export default function Home({ characters, getCharacters }) {
     return (
         <div>
         <h1>Rate Harry Potter Characters</h1>
-        <Form getCharacter={getCharacter} />
-        <CharacterDisplay character={character} />
+            <CharacterDisplay characters={characters} />
+            <Form getCharacters={getCharacters} />
+        
         </div>
     )
 }

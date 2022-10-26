@@ -1,10 +1,10 @@
-export default function CharacterDisplay({ character }) {
+export default function CharacterDisplay({ characters }) {
 
     const loaded = () => {
         return (
             <div>
-                <h2>{character.name}</h2>
-                <img src={character.image} alt={character.name} />
+                <h2>{characters.name}</h2>
+                <img src={characters.image} alt={characters.name} />
             </div>
         )
     }
@@ -13,6 +13,6 @@ export default function CharacterDisplay({ character }) {
         return <div>No character to display</div>    
     }
 
-    return character ? loaded() : loading();
+    return characters ? loaded() : loading();
     
 }
