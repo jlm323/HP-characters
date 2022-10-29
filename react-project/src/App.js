@@ -1,27 +1,58 @@
 import { Routes, Route, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { useState, useEffect } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Loved from './pages/Loved';
 import Hated from './pages/Hated';
+import CharacterDetails from './pages/CharacterDetails';
+
 
 
 function App() {
-
-  const api = process.env.REACT_APP_API;
 
   let [characters, setCharacters] = useState([]);
   let [loved, setLoved] = useState([]);
   let [hated, setHated] = useState([]);
 
+
+  //let params = useParams();
+
   let navigate = useNavigate();
+
+  const getCharacters = () => {
+      axios.get(`https://legacy--api.herokuapp.com/api/v1/characters?page=1`).then((response) => {
+        console.log(response.data)
+        setCharacters(response.data);
+      })
+    }
+  
+    useEffect(() => {
+      getCharacters();
+      console.log('test')
+    }, [])
+
+     
 
   const addToLoved = (characters) => {
     characters.love = true;
     setLoved([...loved, characters]);
-    alert('added to Loved');
-    navigate('/loved');
+    // getting button element
+    let added = document.getElementById('btnL');
+    // if the text content of button is add to loved
+    // then change text content to added to loved
+    // else text content is add to loved
+    if (added.textContent === "Add to Loved") {
+      added.textContent = "Added to Loved!";
+    } else {
+      added.textContent = "Add to Loved";
+    }
+    // settimeout to delay navigation to loved page
+    setTimeout(() => {
+      navigate('/loved');
+    }, 2000)
+    
   }
 
   const addToHated = (characters) => {
@@ -43,27 +74,6 @@ function App() {
     setHated(filteredHate);
   }
 
-  const getCharacters = async () => {
-    try {
-      const response = await fetch(api);
-      const data = await response.json();
-      console.log(data)
-      setCharacters(data);
-    } catch (err) {
-      console.log('error!');
-      console.log(err);
-    }
-  }
-
-  useEffect(() => {
-      getCharacters("Draco Malfoy");
-      console.log('test')
-    }, [])
-
-    // useEffect(() => {
-    //   console.log("character data has changed!", characters);
-    // }, [characters]);
-
   return (
     <div className="App">
       <Navbar />
@@ -73,9 +83,11 @@ function App() {
             {<Home 
               characters={characters} 
               getCharacters={getCharacters} 
+              setCharacters={setCharacters}
               loved={loved} 
               addToLoved={addToLoved}
-              addToHated={addToHated} />
+              addToHated={addToHated}
+               />
             }
         />
 
@@ -87,6 +99,12 @@ function App() {
             } 
         />
 
+        <Route path="/loved/:id" 
+          element=
+          {<CharacterDetails 
+            loved={loved}
+            />} />
+
         <Route path="/hated" 
           element={
             <Hated 
@@ -94,6 +112,12 @@ function App() {
               removeFromHate={removeFromHate} />
           } 
         />
+
+        <Route path="/hated/:id" 
+          element=
+            {<CharacterDetails 
+            hated={hated} 
+            />} />
       </Routes>
     </div>
   );
