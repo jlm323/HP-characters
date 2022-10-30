@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
-import Loved from './pages/Loved';
-import Hated from './pages/Hated';
+import SavedCharacters from './pages/SavedCharacters';
 import CharacterDetails from './pages/CharacterDetails';
 
 
@@ -13,11 +12,7 @@ import CharacterDetails from './pages/CharacterDetails';
 function App() {
 
   let [characters, setCharacters] = useState([]);
-  let [loved, setLoved] = useState([]);
-  let [hated, setHated] = useState([]);
-
-
-  //let params = useParams();
+  let [saved, setSaved] = useState([]);
 
   let navigate = useNavigate();
 
@@ -33,46 +28,16 @@ function App() {
       console.log('test')
     }, [])
 
-     
-
-  const addToLoved = (characters) => {
-    characters.love = true;
-    setLoved([...loved, characters]);
-    // getting button element
-    let added = document.getElementById('btnL');
-    // if the text content of button is add to loved
-    // then change text content to added to loved
-    // else text content is add to loved
-    if (added.textContent === "Add to Loved") {
-      added.textContent = "Added to Loved!";
-    } else {
-      added.textContent = "Add to Loved";
+    const addToSaved = (characters) => {
+      characters.save = true
+      setSaved([...saved, characters]);
+      alert(`Added to Saved!`);
+      navigate("/saved");
     }
-    // settimeout to delay navigation to loved page
-    setTimeout(() => {
-      navigate('/loved');
-    }, 2000)
-    
-  }
 
-  const addToHated = (characters) => {
-    characters.hate = true;
-    setHated([...hated, characters]);
-    alert('added to Hated');
-    navigate('/hated');
-  }
-
-  const removeFromLoved = (characters) => {
-    characters.love = false;
-    let filteredLove = loved.filter((c) => c.name !== characters.name);
-    setLoved(filteredLove);
-  }
-
-  const removeFromHate = (characters) => {
-    characters.hate = false;
-    let filteredHate = hated.filter((c) => c.name !== characters.name);
-    setHated(filteredHate);
-  }
+    const removeFromSaved = () => {
+      console.log('removed')
+    }
 
   return (
     <div className="App">
@@ -84,40 +49,27 @@ function App() {
               characters={characters} 
               getCharacters={getCharacters} 
               setCharacters={setCharacters}
-              loved={loved} 
-              addToLoved={addToLoved}
-              addToHated={addToHated}
+              saved={saved}
+              addToSaved={addToSaved}
                />
             }
         />
 
-        <Route path="/loved" 
+        <Route path="/saved"
           element=
-            {<Loved 
-              loved={loved}
-              removeFromLoved={removeFromLoved} />
+            {<SavedCharacters
+              characters={characters}
+              removeFromSaved={removeFromSaved} 
+              />
             } 
         />
 
-        <Route path="/loved/:id" 
+        <Route path="/saved/:id"
           element=
-          {<CharacterDetails 
-            loved={loved}
-            />} />
+            {<CharacterDetails
+              saved={saved} />} />
 
-        <Route path="/hated" 
-          element={
-            <Hated 
-              hated={hated}
-              removeFromHate={removeFromHate} />
-          } 
-        />
-
-        <Route path="/hated/:id" 
-          element=
-            {<CharacterDetails 
-            hated={hated} 
-            />} />
+        
       </Routes>
     </div>
   );

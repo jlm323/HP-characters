@@ -1,10 +1,8 @@
 import CharacterDisplay from "../components/CharacterDisplay";
 import ReactPaginate from 'react-paginate';
 
-// import Form from "../components/Form";
 
-
-export default function Home({ characters, getCharacters, setCharacters, addToLoved, addToHated }) {
+export default function Home({ characters, getCharacters, setCharacters, addToSaved }) {
 
     const fetchCharacters = async (currentPage) => {
         const res = await fetch(`https://legacy--api.herokuapp.com/api/v1/characters?page=${currentPage}`)
@@ -26,7 +24,7 @@ export default function Home({ characters, getCharacters, setCharacters, addToLo
         <div className="homepage">
             <h1>Rate Harry Potter Characters</h1>
 
-            <CharacterDisplay characters={characters} addToHated={addToHated} addToLoved={addToLoved} />  
+            <CharacterDisplay characters={characters} addToSaved={addToSaved}  />  
 
             <ReactPaginate
             previousLabel={"previous"}
