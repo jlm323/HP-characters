@@ -8,7 +8,10 @@ export default function Navbar() {
                     <Link to="/">Home</Link>
                 </li>
                 <li>
-                    <Link to="/saved">Saved Characters</Link>
+                    <Link to="/featured">Featured Character</Link>
+                </li>
+                <li>
+                    <Link to="/saved">My Characters</Link>
                 </li>
             </ul>
         </nav>

@@ -1,7 +1,7 @@
 import { useLocation, Link } from "react-router-dom";
-// import Stars from "./Stars";
+import Stars from "./Stars";
 
-export default function CharacterDisplay({ characters, addToSaved }) {
+export default function CharacterDisplay({ characters, addToSaved, saved }) {
 
      let location = useLocation();
 
@@ -30,6 +30,7 @@ export default function CharacterDisplay({ characters, addToSaved }) {
                                 <h3>{character.name}</h3>
                                 <img src={character.image_url ? character.image_url : require('../images/castle.png')} alt={character.name} className="page-img" />
                                 <br/>
+                                <Stars />
                                 { character.save ? "Saved" :
                                 <button onClick={() => addToSaved(character)} className="btn-save">Save to My Characters</button>
                                 }

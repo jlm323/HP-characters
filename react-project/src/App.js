@@ -1,20 +1,20 @@
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import SavedCharacters from './pages/SavedCharacters';
-import CharacterDetails from './pages/CharacterDetails';
-
+// import CharacterDetails from './pages/CharacterDetails';
+import Featured from './pages/Featured';
 
 
 function App() {
 
   let [characters, setCharacters] = useState([]);
-  let [saved, setSaved] = useState([]);
+  // let [saved, setSaved] = useState([]);
 
-  let navigate = useNavigate();
+ // let navigate = useNavigate();
 
   const getCharacters = () => {
       axios.get(`https://legacy--api.herokuapp.com/api/v1/characters?page=1`).then((response) => {
@@ -28,16 +28,20 @@ function App() {
       console.log('test')
     }, [])
 
-    const addToSaved = (characters) => {
-      characters.save = true
-      setSaved([...saved, characters]);
-      alert(`Added to Saved!`);
-      navigate("/saved");
-    }
+    // const addToSaved = (character) => {
+    //   const oldSaved = [...saved];
+    //   const newSaved = oldSaved.concat(character)
+    //   setSaved(newSaved);
+    //   // characters.save = true
+    //   // setSaved([...saved, characters]);
+    //   // alert(`Added to Saved!`);
+    //   // navigate("/saved");
+    // }
 
-    const removeFromSaved = () => {
-      console.log('removed')
-    }
+    // const removeFromSaved = (characters) => {
+    //   let filteredArr = saved.filter((c) => c.id !== characters.id);
+    //   setSaved(filteredArr);
+    // }
 
   return (
     <div className="App">
@@ -49,27 +53,18 @@ function App() {
               characters={characters} 
               getCharacters={getCharacters} 
               setCharacters={setCharacters}
-              saved={saved}
-              addToSaved={addToSaved}
                />
             }
         />
 
+        <Route path="/featured"
+          element=
+            {<Featured />} 
+        />        
+
         <Route path="/saved"
-          element=
-            {<SavedCharacters
-              characters={characters}
-              removeFromSaved={removeFromSaved} 
-              />
-            } 
+          element={<SavedCharacters />} 
         />
-
-        <Route path="/saved/:id"
-          element=
-            {<CharacterDetails
-              saved={saved} />} />
-
-        
       </Routes>
     </div>
   );

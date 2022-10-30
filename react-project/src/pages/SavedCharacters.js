@@ -4,13 +4,19 @@ export default function SavedCharacters({ saved }) {
     return (
         <div>
             <h1>Saved Characters</h1>
-            {saved.map((character) => {
+            <p>You don't have any saved characters yet</p>
+        </div>
+    )
+}
+
+/*
+
+ {saved.length > 0 ? saved.map((character) => {
                 return (
                     <CharacterDisplay
                     key={character.id}
                     />
                 )
-            })}
-        </div>
-    )
-}
+            }) : <p>You don't have any saved characters yet</p>}
+
+*/
