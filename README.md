@@ -35,3 +35,6 @@ Author: [Jessica Milewski](https://github.com/jlm323 "GitHub")
 - Star rating credit: [Eric Murphy](https://youtu.be/eDw46GYAIDQ)
 
 This project has no affiliation with the Harry Potter series or the author
+
+## Link
+[HP Character Rating](https://hp-character-rating.netlify.app/)
