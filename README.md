@@ -34,5 +34,4 @@ Author: [Jessica Milewski](https://github.com/jlm323 "GitHub")
 - Pagination credit: [CoderSpirit](https://youtu.be/kMuRr53RjcE)
 - Star rating credit: [Eric Murphy](https://youtu.be/eDw46GYAIDQ)
 
-This project has no affiliation with the Harry Potter series or the author.
-                <p>This project has no affiliation with the Harry Potter series or the author.</p>
+This project has no affiliation with the Harry Potter series or the author
