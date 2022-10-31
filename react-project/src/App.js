@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import SavedCharacters from './pages/SavedCharacters';
 // import CharacterDetails from './pages/CharacterDetails';
 import Featured from './pages/Featured';
+import About from './pages/About';
 
 
 function App() {
@@ -58,12 +59,15 @@ function App() {
         />
 
         <Route path="/featured"
-          element=
-            {<Featured />} 
+          element={<Featured />} 
         />        
 
         <Route path="/saved"
           element={<SavedCharacters />} 
+        />
+
+        <Route path="/about"
+          element={<About />} 
         />
       </Routes>
     </div>

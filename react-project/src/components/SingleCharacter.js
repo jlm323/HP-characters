@@ -14,12 +14,18 @@ export default function SingleCharacter() {
     return (
         <div className="featured-info">
             <h2>{char.name}</h2>
-            <div className="feat-details">
-                <img src={char.image_url} alt={char.name} className="feat-img" /><br />
-                <p>Born: {char.born}</p>
-                <p>Died: {char.died}</p>
-                {/* <p>House: {char.house.name}</p> */}
+            <h3 className="nick">(Nearly Headless Nick)</h3>
+            <div className="info-header">
+                <div className="candles"><img src={require('../images/candles.gif')} alt="candles" className="candle-gif" /></div>
+                <div className="feat-details">
+                    <img src={char.image_url} alt={char.name} className="feat-img" /><br />
+                    <div><span className="label">Born:</span> {char.born}</div>
+                    <div><span className="label">Died:</span> {char.died}</div>
+                    {/* <p>House: {char.house.name}</p> */}
+                </div>
+                <div className="candles"><img src={require('../images/candles.gif')} alt="candles" className="candle-gif" /></div>
             </div>
+           <br/><br/>
             <div className="bio">
                 <p>"Sir Nicholas de Mimsy-Porpington, known after his death as Nearly Headless Nick, (d. 31 October, 1492) was a wizard who attended Hogwarts School of Witchcraft and Wizardry and was Sorted into Gryffindor House.</p>
                 
@@ -36,6 +42,11 @@ export default function SingleCharacter() {
                 <p>Last but not least, Nicholas hired a ghostly orchestra to play the musical saw, and provided them with a black-draped raised platform for them to perform on."
                     <a href="https://harrypotter.fandom.com/wiki/Nicholas_de_Mimsy-Porpington%27s_five-hundredth_Deathday_Party" className="source-link">[2]</a>
                 </p>
+
+                <div className="nick-gif">
+                    <img src={require("../images/nick.gif")} alt="Nearly Headless Nick" />
+                </div> 
+                <br/><br/>
             </div>
         </div>
     )

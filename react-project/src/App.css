@@ -1,25 +1,58 @@
+@font-face {
+  font-family: 'MagicSchoolOne';
+  src: url(./fonts/MagicSchoolOne.woff);
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
 h1, h2, h3 {
   text-align: center;
 }
 
+h1 {
+  font-family: 'MagicSchoolOne';
+  font-size: 45px;
+}
+
+h2 {
+  background-color: rgba(0, 0, 0, 0.308);
+}
+
 h3 {
   font-size: 18px;
+  color: rgb(147, 168, 186);
+}
+
+.nick {
+  color: #ffc300;
+  background-color: rgba(0, 0, 0, 0.349);
 }
 
 nav {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  background-color: #003566;
+  
 }
 
 .navbar {
   list-style: none;
+}
+
+.nav-link {
   margin-left: 10px;
   margin-right: 10px;
 }
 
-li {
-  margin-left: 20px;
+a {
+  text-decoration: none;
+  color: #ffc300;
 }
 
 .characters {
@@ -34,6 +67,7 @@ li {
 }
 
 .card {
+  background-color: #001d3d;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -60,11 +94,15 @@ input[type="radio"] {
 }
 
 .btn-save {
+  background-color: #003566;
+  color: #B9CEDF;
   width: 150px;
   font-size: 12px;
   border: none;
+  border-radius: 3px;
   margin-left: auto;
   margin-right: auto;
+
 }
 
 .btn-save:hover {
@@ -79,12 +117,64 @@ input[type="radio"] {
   width: 70vw;
   margin-left: auto;
   margin-right: auto;
+  background-image: url(./images/DeathDayParty.jpg);
+  background-repeat: no-repeat;
 }
 
 .feat-details {
-
+  background-color: rgba(99, 99, 99, 0.219);
+  color: black;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
 }
 
 .feat-img {
   max-width: 200px;
+}
+
+.label {
+  color: #003566;
+}
+
+.candle-gif {
+  width: 200px;
+}
+
+.info-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.no-saved-char {
+  text-align: center;
+}
+
+.source-link {
+  font-size: 10px;
+}
+
+.nick-gif {
+  display: flex;
+  justify-content: center;
+}
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  
 }

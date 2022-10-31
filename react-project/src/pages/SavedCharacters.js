@@ -1,10 +1,10 @@
-import CharacterDisplay from "../components/CharacterDisplay";
+// import CharacterDisplay from "../components/CharacterDisplay";
 
 export default function SavedCharacters({ saved }) {
     return (
         <div>
             <h1>Saved Characters</h1>
-            <p>You don't have any saved characters yet</p>
+            <p className="no-saved-char">You don't have any saved characters yet</p>
         </div>
     )
 }
